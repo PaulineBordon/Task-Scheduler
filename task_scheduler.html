@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Task Scheduler</title>
+</head>
+<body>
+	<form>Task Scheduler
+		<div>
+			<input type="text" id="title" placeholder="Task title"><br><br>
+			<input type="datetime-local" id="datetime"><br><br>
+			<textarea id="description" rows="7" cols="30" placeholder="Description"></textarea><br><br>
+			<input type="submit" id="createBtn" value="Create Task">
+			<p id="output"></p>
+		</div>
+		<div></div>
+
+	</form>
+
+	<script>
+		const task = document.getElementById('title');
+		const date = document.getElementById('datetime');
+		const desc = document.getElementById('description');
+		const out = document.getElementById('output');
+
+		function display_func() {
+			output.innerHTML = task.value;
+		}
+
+		createBtn.addEventListener('click', display_func);
+	</script>
+
+</body>
+</html>
