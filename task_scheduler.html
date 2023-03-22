@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head> 
+	<title>Task Scheduler</title>
+	<link rel="stylesheet" type="text/css" href="task_scheduler.css">
+</head>
+<body>
+	<div id="container">
+		<h1>Task Scheduler</h1>
+		<input type="text" id="tasktitle" placeholder="Task title"><br><br>
+		<input type="datetime-local" id="datetime"><br><br>
+		<textarea id="description" rows="7" cols="30" placeholder="Description"></textarea><br><br>
+		<button id="createBtn">Create Task</button>
+
+	</div>
+	<table id="display">
+		<tr>
+			<th>Task</th>
+			<th>Date</th>
+			<th>Description</th>
+		</tr>
+	</table>
+
+	<script>
+		const createBtn = document.getElementById('createBtn');
+		createBtn.addEventListener("click", displaydetails);
+
+		const row = 1;
+
+		function displaydetails() {
+			const tasktitle = document.getElementById('tasktitle').value;
+			const datetime =document.getElementById('datetime').value;
+			const description =document.getElementById('description').value;
+
+			if(!tasktitle || !datetime){
+				alert("Please fill task title or date!");
+				return;
+			}
+
+			const display = document.getElementById('display');
+			const newrow = display.insertRow(row);
+			const cell1 = newrow.insertCell(0);
+			const cell2 = newrow.insertCell(1);
+			const cell3 = newrow.insertCell(2);
+
+			cell1.innerHTML = tasktitle;
+			cell2.innerHTML = datetime;
+			cell3.innerHTML = description;
+			row++;
+
+
+		}
+	</script>
+</body>
+</html>
