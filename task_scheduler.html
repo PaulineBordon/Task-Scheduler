@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head> 
+	<title>Task Scheduler</title>
+	<link rel="stylesheet" type="text/css" href="task_scheduler.css">
+</head>
+<body>
+	<div id="container">
+		<h1>Task Scheduler</h1>
+		Task<br>
+		<input type="text" id="tasktitle" placeholder="Task title"><br><br>
+		Due Date<br>
+		<input type="datetime-local" id="date"><br><br>
+		Description<br>
+		<textarea id="description" rows="7" cols="30" placeholder="Write a description of your task"></textarea><br><br>
+		<button id="createBtn">Create Task</button>
+
+	</div>
+	<table id="display">
+		<tr>
+			<th>Task</th>
+			<th>Date</th>
+			<th>Description</th>
+			<th>Status</th>
+			<th><button id="sortBtn">Sort by Due Date &UpArrow;</button></th>
+		</tr>
+	</table>
+
+	<script>
+		const createBtn = document.getElementById('createBtn');
+		const sortBtn = document.getElementById('sortBtn');
+		const row = 1;
+	
+
+		function displaydetails() {
+			const tasktitle = document.getElementById('tasktitle').value;
+			const date = document.getElementById('date').value;
+			const description = document.getElementById('description').value;
+			if(!tasktitle || !date){
+				alert("Please fill task title or date!");
+				return;
+			}
+
+			const display = document.getElementById('display');
+			const newrow = display.insertRow(row); 
+			const cell1 = newrow.insertCell(0);
+			const cell2 = newrow.insertCell(1);
+			const cell3 = newrow.insertCell(2);
+
+			cell1.innerHTML = tasktitle;
+			cell2.innerHTML = date;
+			cell3.innerHTML = description;
+		}
+		createBtn.addEventListener("click", displaydetails);
+
+		//const myDate = new Date();
+		//const month = myDate.getUTCMonth();
+		//const date2 = myDate.getUTCDate();
+
+
+		function sort_date(a, b){
+		const date = document.getElementById('date').value;
+		const arr = [{date}];
+		return new Date(a.arr).valueOf() - new Date(b.arr).valueOf();
+		console.log(arr);
+    }
+    //arr.sort(date);
+
+		sortBtn.addEventListener("click", sort_date);
+
+	</script>
+</body>
+</html>
+
